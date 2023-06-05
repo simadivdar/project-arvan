@@ -36,7 +36,7 @@
 import axios from "axios";
 import { setAuthToken,setUser } from "@/services/Authservice.js";
 import { reactive} from "vue";
-import {setSHow ,textSHow, reloadPage} from "@/services/Postservice.js"
+import {setSHow ,textSHow, reloadPage} from "@/services/Postservice.js";
 export default {
     name:"login-",
   mixins:[setAuthToken,setUser,setSHow ,textSHow, reloadPage],

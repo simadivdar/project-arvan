@@ -24,6 +24,4 @@ export default {
 .navbar {
  color:white;
   }
-
-
 </style>

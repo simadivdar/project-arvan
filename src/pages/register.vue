@@ -49,9 +49,10 @@
 import axios from "axios";
 import {setAuthToken} from "@/services/Authservice.js";
 import { reactive } from "vue";
+import {setSHow ,textSHow, reloadPage} from "@/services/Postservice.js";
 export default {
     name:"Register-",
-    mixins:[setAuthToken],
+    mixins:[setAuthToken,setSHow ,textSHow, reloadPage],
     setup () {
         const redcolor=reactive({
           redColorUser:false,
@@ -77,7 +78,9 @@ export default {
         const token = resp.data.user.token;
         setAuthToken(token);
         console.log(token)
-
+        setSHow(true);
+        textSHow("regestred");
+        reloadPage(); 
       })
 
 .catch((error) => {

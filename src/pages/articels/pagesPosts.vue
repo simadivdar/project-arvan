@@ -23,9 +23,11 @@
             </thead>
             </table>
         </div>
-      <div v-for="(articel,index) in Articels" :key="index">
-        <Table   v-if=" index > page-11 && index <page" :articel="articel" :index="index"/>
-      </div>
+      <tbody >
+        <tr v-for="(articel,index) in Articels" :key="index">
+          <Table  v-if="index > page-11 && index <page" :articel="articel" :index="index"/>
+        </tr>
+      </tbody>
       <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-5">
         <ul class="pagination  pagination-lg">
             <li  class="page-item" v-if="pagechange>1">
@@ -69,7 +71,7 @@ setup(){
   const pagechange=ref();
   Articels.value=JSON.parse(localStorage.getItem("Articels"));
   setPosts();
-  pageNumber.value=Articels.value.length/10;
+  pageNumber.value=Math.ceil(Articels.value.length/10);
   const show=localStorage.getItem("show");
   setSHow();
   const text=localStorage.getItem("text");

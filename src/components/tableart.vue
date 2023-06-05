@@ -1,31 +1,24 @@
 <template>
-  <div class="table-responsive">  
-  <table class="table ms-auto">
-  <tbody>
-    <tr>
       <td scope="col-1">{{ index+1 }}</td>
-      <td scope="col-2">{{ articel.title}}</td>
+      <td scope="col-1" class="txt-overflow-ellipsis">{{ articel.title}}</td>
       <td scope="col-1">{{ articel.author.username}}</td>
-      <td scope="col-2">{{ articel.tagList}}</td>
-      <td scope="col-3">{{ articel.body.split(" ").slice(0,20).join(" ")}}</td>
-      <td scope="col-2"><date-format :date=" articel.createdAt.substring(0,10) "/></td>
+      <td scope="col-1" class="text-truncate">{{ articel.tagList}}</td>
+      <td scope="col-1">{{ articel.body.split(" ").slice(0,20).join(" ")}}</td>
+      <td scope="col-1" class="text-truncate" ><date-format :date=" articel.createdAt.substring(0,10) "/></td>
       <td scope="col-1">
         <div class="dropdown position-absolute">
           <button type="button" class="btn btn-primary dropdown-toggle " data-bs-toggle="dropdown">
             ...
           </button>
-    <ul class="dropdown-menu">
-      <li><router-link  class="dropdown-item"  :to="{ name:'EditPost-' ,  params: { slug: articel.slug }}">Edit</router-link></li>
-      <hr>
-      <li>
-        <button  class="btn dropdown-item " data-bs-toggle="modal" data-bs-target="#exampleModal" @click="setSlug(articel.slug)">Delete</button>
-      </li>
-    </ul>
-  </div>    
+          <ul class="dropdown-menu">
+            <li><router-link  class="dropdown-item"  :to="{ name:'EditPost-' ,  params: { slug: articel.slug }}">Edit</router-link></li>
+            <hr>
+            <li>
+            <button  class="btn dropdown-item " data-bs-toggle="modal" data-bs-target="#exampleModal" @click="setSlug(articel.slug)">Delete</button>
+            </li>
+          </ul>
+      </div>    
       </td>
-    </tr>
-  </tbody>
-</table>
         <div class=" modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" show>
           <div class="modal-dialog">
             <div class="modal-content">
@@ -43,7 +36,6 @@
             </div>
           </div>
         </div>
-</div>
 </template>
 
 <script>
@@ -87,5 +79,9 @@ export default {
 </script>
 
 <style>
-
+.txt-overflow-ellipsis {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:pre-wrap; /* or nowrap*/
+    }
 </style>

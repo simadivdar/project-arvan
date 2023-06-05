@@ -7,6 +7,7 @@ import Articels from "./pages/articels/dashboard.vue"
 import Posts from "./pages/articels/posts.vue"
 import EditPosts from "./pages/articels/Editpost.vue"
 import CreateArticels from "./pages/articels/createpost.vue"
+import MyArticels from "./pages/articels/myposts.vue"
 import PagesPosts from "./pages/articels/pagesPosts.vue"
 import NotFound from "@/components/notFound.vue"
 const isGuest = (to,from, next) => {
@@ -35,6 +36,7 @@ const routes=[
         {path:"" , name:"posts-" , component: Posts, beforeEnter: isAuthenticated},
         {path:"edit/:slug " , name:"EditPost-" , component: EditPosts, beforeEnter: isAuthenticated},
         {path:"create " , name:"CreateArticels-" , component: CreateArticels, beforeEnter: isAuthenticated},
+        {path:"myArticels" , name:"MyArticels-" , component: MyArticels, beforeEnter: isAuthenticated},
         {path:"pages/:page " , name:"PagesPosts-" , component: PagesPosts, beforeEnter: isAuthenticated},
         
     ] },

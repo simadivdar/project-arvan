@@ -10,15 +10,16 @@
     </div>
     <div class="row">
         <div class="table-responsive">  
-            <table class="table">
+            <table class="table ms-auto gx-5">
             <thead class="table-light">
                 <tr>
-                <th scope="col-2">#</th>
+                <th scope="col-1">#</th>
                 <th scope="col-2">Title</th>
-                <th scope="col-2">Author</th>
+                <th scope="col-1">Author</th>
                 <th scope="col-2">Tags</th>
-                <th scope="col-2">Excerpt</th>
+                <th scope="col-3">Excerpt</th>
                 <th scope="col-2">Created</th>
+                <th scope="col-2"></th>
                 </tr>
             </thead>
             </table>
@@ -27,13 +28,18 @@
             <div>Loading...</div>
             <div class="spinner-border ms-auto" role="status" aria-hidden="true" ></div>
         </div>
-        <div v-else-if="pageNumber==1">
-            <Table  v-for="(articel,index) in Articels" :key="index" :articel="articel" :index="index"/>  
+        <div v-else-if="pageNumber==0">
+            <h2 class="text-center text-secondary">There Are No Articels Available</h2>
         </div>
-        <div v-else>
-            <div  v-for="(articel,index) in Articels" :key="index" >
-                <Table v-if="index<10" :articel="articel" :index="index"/>  
-            </div>
+        <tbody  v-else-if="pageNumber==1 || pageNumber<1">
+            <tr  v-for="(articel,index) in Articels"  :key="index" >
+                <Table :articel="articel" :index="index"/> 
+            </tr>
+        </tbody> 
+        <tbody  v-else >
+            <tr v-for="(articel,index) in Articels" :key="index">
+                <Table v-if="index<10" :articel="articel" :index="index"/> 
+            </tr>
             <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-5">
                 <ul class="pagination  pagination-lg" >
                     <li class="page-item">
@@ -53,7 +59,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </tbody>
     </div>
 </div>
 </template>
@@ -68,8 +74,11 @@ export default {
     components:{
         Table
     },
+    props:{
+        url:String
+    },
     mixins:[setSHow ,setPage, setPosts,textSHow],
-    setup(){
+    setup(props){
     const Articels=ref([])
     const pageNumber=ref(1);
     const loading=ref(true);
@@ -82,17 +91,20 @@ export default {
     const textshow=ref(text)
     onMounted(() => {
         axios
-            .get("https://api.realworld.io/api/articles?limit=100")
+            .get(props.url)
             .then(function (response) {
                 Articels.value=response.data.articles;
                 console.log(response.data.articles)
                 console.log(Articels.value.length)
                 setPosts(Articels);
-                pageNumber.value=Articels.value.length/10;
+                pageNumber.value=Math.ceil(Articels.value.length/10);
                 console.log(pageNumber.value);
                 loading.value=false
             })
             .catch(function (error) {
+                if ( error.response.status === 403) {
+                show.value=true;
+             }
                 console.log(error);
             })
 })

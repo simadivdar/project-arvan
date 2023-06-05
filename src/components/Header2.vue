@@ -6,6 +6,9 @@
                 <router-link to="/articels" class="nav-link text-white ps-4" data-toggle="pill">All Articles</router-link>
             </li>
             <li class="nav-item" >
+                <router-link :to="{name:'MyArticels-'}"  class="nav-link text-white ps-4" data-toggle="pill">My Articles</router-link>
+            </li>
+            <li class="nav-item" >
                 <router-link :to="{name:'CreateArticels-'}"  class="nav-link text-white ps-4" data-toggle="pill">New Article</router-link>
             </li>
         </ul>
