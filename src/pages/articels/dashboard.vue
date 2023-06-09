@@ -1,9 +1,9 @@
 <template >
-  <div class="row ">
+  <div class="row">
     <Header1 />
   </div>
-  <div class="d-flex w-100 h-100 container-fluid">
-    <div class="row">
+  <div class="d-flex w-100 vh-100 container-fluid p-0">
+    <div class="row w-100">
       <div class="col-2">
         <Header2 />
       </div>

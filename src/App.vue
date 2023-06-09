@@ -3,25 +3,24 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
-import {setAuthToken} from "@/services/Authservice.js";
+import { onMounted } from "vue";
+import { setAuthToken } from "@/services/Authservice.js";
 export default {
-  name: 'App',
-  mixins:[setAuthToken],
-  setup(){
-  onMounted(() => {
-    console.log("hiiii")
-    const token = localStorage.getItem("token")
-    setAuthToken(token)
-    console.log(token)
-    
-}) 
-}
-}
+  name: "App",
+  mixins: [setAuthToken],
+  setup() {
+    onMounted(() => {
+      console.log("hiiii");
+      const token = localStorage.getItem("token");
+      setAuthToken(token);
+      console.log(token);
+    });
+  },
+};
 </script>
 
-<style >
+<style>
 .navbar {
- color:white;
-  }
+  color: white;
+}
 </style>
