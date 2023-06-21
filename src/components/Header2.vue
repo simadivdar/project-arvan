@@ -1,32 +1,34 @@
 <template>
-  <div class="bg-primary h-100 container-fluid">
-    <ul class="nav flex-column nav-pills">
-      <span class="text-white fs-5 text-sm ps-3 py-2">Post</span>
-      <li class="nav-item">
-        <router-link
-          to="/articels"
-          class="nav-link text-white ps-4"
-          data-toggle="pill"
-          >All Articles</router-link
-        >
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'MyArticels-' }"
-          class="nav-link text-white ps-4"
-          data-toggle="pill"
-          >My Articles</router-link
-        >
-      </li>
-      <li class="nav-item">
-        <router-link
-          :to="{ name: 'CreateArticels-' }"
-          class="nav-link text-white ps-4"
-          data-toggle="pill"
-          >New Article</router-link
-        >
-      </li>
-    </ul>
+  <div class="container-fluid p-0">
+    <div class="bg-primary h-100 container-fluid">
+      <ul class="nav flex-column nav-pills">
+        <span class="text-white fs-5 text-sm ps-3 py-2">Post</span>
+        <li class="nav-item">
+          <router-link
+            to="/articels"
+            class="nav-link text-white ps-4"
+            data-toggle="pill"
+            >All Articles</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            :to="{ name: 'MyArticels-' }"
+            class="nav-link text-white ps-4"
+            data-toggle="pill"
+            >My Articles</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link
+            :to="{ name: 'CreateArticels-' }"
+            class="nav-link text-white ps-4"
+            data-toggle="pill"
+            >New Article</router-link
+          >
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

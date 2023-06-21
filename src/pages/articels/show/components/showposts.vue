@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid w-100 h-100">
     <div class="row d-flex justify-content-around">
-      <div class="col-6"><h2 class="py-4">{{ text }}</h2></div>
-      <div class="col-6">
+      <div class="col-2 col-sm-6"><h2 class="py-4">{{ text }}</h2></div>
+      <div class="col-10 col-sm-6">
         <div v-if="show" class="alert alert-success fade show" role="alert">
           <p>Well done! Article {{ textshow }} successfuly.</p>
         </div>
