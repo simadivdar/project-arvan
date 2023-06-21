@@ -1,7 +1,12 @@
 <template>
   <section class="vh-100">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-      <div class="container h-100">
+      <div class="container-fluid h-100">
+        <div class="col">
+        <div v-if="show" class="col alert alert-danger fade show" role="alert">
+          <p>Failed!You have already registered.</p>
+        </div>
+      </div>
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="bg-light mb-3">
@@ -87,13 +92,14 @@
 
 <script>
 import axios from "axios";
-import { setAuthToken } from "@/services/Authservice.js";
-import { reactive } from "vue";
+import { setAuthToken,setUser } from "@/services/Authservice.js";
+import { reactive,ref } from "vue";
 import { setSHow, textSHow, reloadPage } from "@/services/Postservice.js";
 export default {
   name: "Register-",
-  mixins: [setAuthToken, setSHow, textSHow, reloadPage],
+  mixins: [setAuthToken,setUser, setSHow, textSHow, reloadPage],
   setup() {
+    const show = ref(false);
     const redcolor = reactive({
       redColorUser: false,
       redColorEmail: false,
@@ -115,18 +121,22 @@ export default {
       axios
         .post("https://api.realworld.io/api/users", body)
         .then((resp) => {
-          console.log("helo");
           const token = resp.data.user.token;
           setAuthToken(token);
-          console.log(token);
+          const username = resp.data.user.username;
+          setUser(username);
+        //  console.log(token);
           setSHow(true);
           textSHow("regestred");
           reloadPage();
         })
 
         .catch((error) => {
+          if (error.response.status === 422) {
+            show.value = true;
+          }
           console.log(error);
-          console.log(body);
+        //  console.log(body);
         });
     }
     function validate() {
@@ -157,7 +167,7 @@ export default {
       }
     }
 
-    return { body, errorText, redcolor, register, validate };
+    return { body, errorText,show, redcolor, register, validate };
   },
 };
 </script>

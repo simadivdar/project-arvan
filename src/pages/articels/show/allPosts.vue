@@ -17,7 +17,7 @@ export default {
     const text=ref("All Posts")
     const url = ref();
     url.value = "https://api.realworld.io/api/articles?limit=45";
-    console.log(url.value);
+  //  console.log(url.value);
     return { url,text };
   },
 };

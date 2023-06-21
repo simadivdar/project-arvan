@@ -30,7 +30,7 @@ export const setSlug = (slug) => {
 export const setPosts = (Articels) => {
   if (Articels) {
     localStorage.setItem("Articels", JSON.stringify(Articels.value));
-    console.log(Articels);
+  //  console.log(Articels);
   } else {
     localStorage.getItem("Articels");
   }
@@ -38,7 +38,7 @@ export const setPosts = (Articels) => {
 export const setPage = (page) => {
   if (page) {
     localStorage.setItem("page", page);
-    console.log(page);
+  //  console.log(page);
   } else {
     localStorage.getItem("page");
     localStorage.removeItem("page");

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import { checkAuth } from "@/services/Authservice.js";
 import Login from "./pages/login.vue";
 import Welcome from "./pages/welcome.vue";
@@ -77,7 +77,7 @@ const routes = [
   { path: "/:pathMatch(.*)*", name: " NotFound-", component: NotFound },
 ];
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 export default router;

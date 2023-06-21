@@ -42,13 +42,13 @@ export default {
     const pageLoading = ref(true);
     const post = reactive({});
     const route = useRoute();
-    console.log(route.params);
+  //  console.log(route.params);
     function getPost() {
       axios
         .get(`https://api.realworld.io/api/articles/${route.params.slug}`)
         .then(function (response) {
           post.value = response.data.article;
-          console.log(post.value);
+          //console.log(post.value);
           pageLoading.value = false;
         })
         .catch(function (error) {
@@ -59,7 +59,6 @@ export default {
 
     function updatePost(formData) {
       loading.value = true;
-      console.log();
       axios
         .put(
           `https://api.realworld.io/api/articles/${route.params.slug}`,

@@ -118,9 +118,9 @@ export default {
     function changePage() {
       pagechange.value = localStorage.getItem("page");
       setPage();
-      console.log(pagechange.value);
+    //  console.log(pagechange.value);
       page.value = pagechange.value * 10;
-      console.log(page.value);
+    //  console.log(page.value);
     }
     changePage();
 

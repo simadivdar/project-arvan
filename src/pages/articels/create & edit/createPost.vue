@@ -29,8 +29,8 @@ export default {
       loading.value = true;
       axios
         .post("https://api.realworld.io/api/articles", formData)
-        .then((resp) => {
-          console.log(resp.data);
+        .then(() => {
+        //  console.log(resp.data);
           setSHow(true);
           textSHow("created");
           reloadPage();

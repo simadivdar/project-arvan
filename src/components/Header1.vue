@@ -5,20 +5,22 @@
         class="navbar navbar-expand-sm bg-dark bg-body-white w-100"
         style="height: 60px"
       >
-        <div class="row container-fluid">
-          <div class="col-10 col-md-11">
+        <div class="row container-fluid ">
+          <div class="col-11">
             <span class="fs-4 ms-4">Arvan Challenge</span>
-            <span class="text-sm ms-4 me-1">Welcome</span>
-            <span ref="root" class="text-sm"></span>
+            <span class="media">
+              <span class="text-sm ms-4 me-1">Welcome</span>
+              <span ref="root" class="text-sm"></span>
+            </span>
           </div>
           <div
-            class="col-2 col-md-1 col-ms-auto collapse navbar-collapse"
+            class="col-1 col-ms-auto"
             id="navbarSupportedContent"
           >
             <button
               type="button"
               @click="logOut"
-              class="btn btn-outline-primary"
+              class="btn btn-outline-primary btn-head"
             >
               Logout
             </button>
@@ -41,7 +43,7 @@ export default {
     const User = ref();
     const username = localStorage.getItem("username");
     setUser();
-    console.log(username);
+  //  console.log(username);
     User.value = username;
     function logOut() {
       let token;
@@ -56,4 +58,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@media (max-width:576px){
+  .media{
+    display: block;
+  }
+  .btn-head{
+    margin-left: -4rem;
+  }
+}
+</style>

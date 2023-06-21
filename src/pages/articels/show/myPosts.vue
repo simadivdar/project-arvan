@@ -19,10 +19,10 @@ export default {
     const url = ref();
     const username = localStorage.getItem("username");
     setUser();
-    console.log(username);
+  //  console.log(username);
     User.value = username;
     url.value = `https://api.realworld.io/api/articles?author=${User.value}`;
-    console.log(url.value);
+  //  console.log(url.value);
     return { url,text };
   },
 };

@@ -8,7 +8,7 @@
     <date-format :date="articel.createdAt.substring(0, 10)" />
   </td>
   <td scope="col-2">
-    <div class="dropdown position-absolute">
+    <div class="dropdown">
       <button
         type="button"
         class="btn btn-primary dropdown-toggle"
@@ -95,7 +95,7 @@ export default {
   setup() {
     function deletePost() {
       const slugPost = localStorage.getItem("slug");
-      console.log(slugPost);
+    //  console.log(slugPost);
       axios
         .delete(`https://api.realworld.io/api/articles/${slugPost}`)
         .then(function () {

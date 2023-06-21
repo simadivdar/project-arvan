@@ -114,21 +114,21 @@ export default {
     const loading = ref(true);
     const show = localStorage.getItem("show");
     setSHow();
-    console.log(show);
+  //  console.log(show);
     const textMsg = localStorage.getItem("text");
     textSHow();
-    console.log(textMsg);
+  //  console.log(textMsg);
     const textshow = ref(textMsg);
     onMounted(() => {
       axios
         .get(props.url)
         .then(function (response) {
           Articels.value = response.data.articles;
-          console.log(response.data.articles);
-          console.log(Articels.value.length);
+        //  console.log(response.data.articles);
+        //  console.log(Articels.value.length);
           setPosts(Articels);
           pageNumber.value = Math.ceil(Articels.value.length / 10);
-          console.log(pageNumber.value);
+        //  console.log(pageNumber.value);
           loading.value = false;
         })
         .catch(function (error) {

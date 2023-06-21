@@ -138,9 +138,9 @@ export default {
       axios
         .get("https://api.realworld.io/api/tags")
         .then((resp) => {
-          console.log(resp.data);
+        //  console.log(resp.data);
           tags.value = resp.data.tags;
-          console.log(tags.value);
+        //  console.log(tags.value);
         })
         .catch(function (error) {
           console.log(error);

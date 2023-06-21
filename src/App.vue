@@ -10,10 +10,10 @@ export default {
   mixins: [setAuthToken],
   setup() {
     onMounted(() => {
-      console.log("hiiii");
+    //  console.log("hiiii");
       const token = localStorage.getItem("token");
       setAuthToken(token);
-      console.log(token);
+    //  console.log(token);
     });
   },
 };

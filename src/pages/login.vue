@@ -1,11 +1,17 @@
 <template>
   <section class="vh-100">
     <div class="container-fluid">
+      <div class="col">
+        <div v-if="show" class="col alert alert-danger fade show" role="alert">
+          <p>Failed!Please register first.</p>
+        </div>
+      </div>
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-sm-6 text-black bg-light mt-5">
           <div
             class="d-flex align-items-center h-custom-2 px-4 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-5"
           >
+          
             <form style="width: 100rem">
               <h3
                 class="text-center fs-1 text-secondary mb-3 pb-3 text-uppercase"
@@ -71,12 +77,13 @@
 <script>
 import axios from "axios";
 import { setAuthToken, setUser } from "@/services/Authservice.js";
-import { reactive } from "vue";
+import { reactive,ref } from "vue";
 import { setSHow, textSHow, reloadPage } from "@/services/Postservice.js";
 export default {
   name: "login-",
   mixins: [setAuthToken, setUser, setSHow, textSHow, reloadPage],
   setup() {
+    const show = ref(false);
     const redcolor = reactive({
       redColorEmail: false,
       redColorPassword: false,
@@ -99,13 +106,16 @@ export default {
           setAuthToken(token);
           const username = resp.data.user.username;
           setUser(username);
-          console.log(username);
+        //  console.log(username);
           setSHow(true);
           textSHow("conected");
           reloadPage();
         })
 
         .catch((error) => {
+          if (error.response.status === 403) {
+            show.value = true;
+          }
           console.log(error);
         });
     }
@@ -127,7 +137,7 @@ export default {
         login();
       }
     }
-    return { body, login, validate, redcolor, errorText };
+    return { body, login, validate,show, redcolor, errorText };
   },
 };
 </script>
